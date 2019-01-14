@@ -29,10 +29,17 @@ class Triangle
         return :scalene
       end
     else
-      raise TriangleError
+      begin
+        raise TriangleError
+      rescue TriangleError => error
+          puts error.message
+      end
     end
   end
 
   class TriangleError < StandardError
+    def message
+      "The given sides do not make a valid triangle"
+    end
   end
 end
