@@ -1,18 +1,18 @@
 class Triangle
   def initialize(side_1, side_2, side_3)
-    @triangle_sides = []
-    @triangle_sides << side_1
-    @triangle_sides << side_2
-    @triangle_sides << side_3
+    @sides = []
+    @sides << side_1
+    @sides << side_2
+    @sides << side_3
   end
 
-  def valid?
-    sum_one_two = @triangle_sides[0] + @triangle_sides[1]
-    sum_one_three = @triangle_sides[0] + @triangle_sides[2]
-    sum_two_three = @triangle_sides[1] + @triangle_sides[2]
+  def valid
+    sum_one_two = @sides[0] + @sides[1]
+    sum_one_three = @sides[0] + @sides[2]
+    sum_two_three = @sides[1] + @sides[2]
 
-    if (@triangle_sides.none? {|side| side <= 0}) &&
-      (sum_one_two > @triangle_sides[2] && sum_one_three > @triangle_sides[1] && sum_two_three > @triangle_sides[0])
+    if (@sides.none? {|side| side <= 0}) &&
+      (sum_one_two > @sides[2] && sum_one_three > @sides[1] && sum_two_three > @sides[0])
       return true
     else
       return false
@@ -20,10 +20,10 @@ class Triangle
    end
 
   def kind
-    if valid?
-      if @triangle_sides.uniq.length == 1
+    if valid
+      if @sides.uniq.length == 1  
         return :equilateral
-      elsif @triangle_sides.uniq.length == 2
+      elsif @sides.uniq.length == 2 
         return :isosceles
       else
         return :scalene
